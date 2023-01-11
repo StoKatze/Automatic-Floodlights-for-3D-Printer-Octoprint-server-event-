@@ -1,9 +1,4 @@
-# PLEASE NOTE - If you are using Octoprint, you can use its event manager. No need to do all of this. Check my new repository for more info: https://github.com/StoKatze/Automatic-Floodlights-for-3D-Printer-Octoprint-server-event-
-
-This repository will be archived.
-
 # Automatic Floodlights for 3D Printer (Octoprint server)
-A Python script sends an HTTP GET request to the octoprint server. If it responds that it is printing, a signal is sent to a relay that turns on a parallel led lamp that I use as a flood light for the timelapse camera.
 
 ## Requirements
 ### Software
@@ -50,53 +45,19 @@ If you don't have a second 5V pin available, please follow the alternate wiring 
 Please note that if you have a fan, the ground pin next to the 5V one might be already occupied. This is not an issue since you can use any other ground pin.
 
 ## Usage 
-Download the python script inside a directory, edit some parameters and execute it.
-If your Octoprint server automatically starts at boot time, you can use a crontab to start this other script too.
-If you want to use cron, I suggest setting it to run the autostart scripts. It's also possible to just run the python code directly if you don't want useless files in your system.
+Download the python scripts inside a directory, edit some parameters and set up octoprint to execute it when a print stars or ends or fails.
 
 ### Detailed instructions
 #### Configuring the python script
 1. Create a new directory and ```CD``` into it
-1. Download [AutomaticOctoprintLED.py](Python/AutomaticOctoprintLED.py) in this directory
-1. Edit it using nano or any other text editor ```nano AutomaticOctoprintLED.py```
-1. Check and, if needed, edit your settings from line 13 to line 16 (an in-depth explanation of these options is available in the script, comments from line 6 to line 12)
-1. Set your API Key on line 18 (Octoprint Server Web UI -> Settings -> API -> Enable CORS, then copy the Global API Key string) - DO NOT SHARE THIS KEY! WHOEVER HAS IT CAN CONTROL YOUR WHOLE OCTOPRINT SERVER!
-1. If you are using another pin for the relay signal, edit line 23 too
+1. Download the python scripts in this directory
+1. Edit it using nano or any other text editor ```nano OctoprintLEDON.py```
+1. Check and, if you are using another pin for the relay signal, edit line 23
 1. Save and exit
+1. Repeat steps 3, 4 and 5 for file OctoprintLEDOFF.py
 
-#### Running the script manually
-1. Execute the script ```python3 AutomaticOctoprintLED.py```
-1. The script should print some text
-1. Use ```CTRL+C``` to terminate it
-1. OPTIONAL: you can run it to save a log file (don't forget the -u option - also note that the log is erased every time you start the python script) ```python3 -u AutomaticOctoprintLED.py > ./log.txt 2>&1 ``` or ignore all output ```python3 AutomaticOctoprintLED.py &> /dev/null``` - You can also use screen to hide the output (```sudo apt update && sudo apt install screen && screen```, press enter and write your command. You can use ```CTRL+A+D``` to detach from your screen session and ```screen -r``` to resume it)
-
-####  Using the autostart with logging
-1. Download the [octoprintLedLog.sh](Autostart/octoprintLedLog.sh) script in the same directory of the python file
-1. Make it executable ```chmod +x octoprintLedLog.sh```
-1. Execute it
-
-Please note that the log file is erased every time you start this script.
-
-#### Using the silent autostart
-1. Download the [octoprintLed.sh](Autostart/octoprintLed.sh) file
-1. Make it executable
-1. Execute it
-
-#### Using crontab to automatically start this script at boot time
-1. Edit your user's crontab (don't forget to edit the path to match your system settings - also if you want to save a log file make sure that the user you're editing the crontab is allowed to write to the script folder): ```crontab -e```
-1. Add one of the following, depending on your setup: 
-* If using the logging start script [octoprintLedLog.sh](Autostart/octoprintLedLog.sh):<br>
-```@reboot /path/to/your/octoprintLedLog.sh```
-* If using the silent start script [octoprintLed.sh](Autostart/octoprintLed.sh):<br>
-```@reboot /path/to/your/octoprintLed.sh```
-* Or you can execute the python script directly (not tested but should work fine - not logging version):<br>
-```@reboot python3 path/to/your/AutomaticOctoprintLED.py >& /dev/null```
-* Or you can execute the python script directly (not tested but should work fine - logging version):<br>
-```@reboot python3 path/to/your/AutomaticOctoprintLED.py > /path/to/log.txt 2>&1```
-
-If the script terminates earlier than expected (due to some connection errors) you may need to add some timeout to allow octoprint to start.
-Just add ```sleep [NUMBER_IN_SECONDS] && ``` after ```@reboot``` but before anything else (please note there must be a space after ```@reboot``` and after ```&&```).
-E.g.: ```@reboot sleep 60 && /path/to/your/octoprintLed.sh``` [OR] ```@reboot sleep 120 && python3 path/to/your/AutomaticOctoprintLED.py > ./log.txt 2>&1```
+#### Configuring Octoprint
+1. Writing...
 
 ## Thank you
 I don't know much about electronics so I tried making this circuit as easy as possible. Suggestions are welcome.
