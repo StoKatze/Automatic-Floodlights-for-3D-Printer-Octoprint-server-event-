@@ -62,7 +62,7 @@ Download the python scripts inside a directory, edit some parameters and set up 
 1. Open your Octoprint Web UI
 1. Open the settings (wrench icon)
 1. Choose "Event Manager" on the left sidebar
-1. Add these events (click close when you're done filling all the fields - also replace <SCRIPTS-PATH> with the absolute path of the scripts directory on your system):
+1. Add these events (click close when you're done filling all the fields - also replace ```<SCRIPTS-PATH>``` with the absolute path of the scripts directory on your system):
 * Event -> ```PrintStarted``` / Command -> ```python3 <SCRIPTS-PATH>/OctoprintLEDON.py``` / Type -> ```System``` / Enabled -> ```Checked```
 * Event -> ```PrintDone``` / Command -> ```python3 <SCRIPTS-PATH>/OctoprintLEDOFF.py``` / Type -> ```System``` / Enabled -> ```Checked```
 * Event -> ```PrintFailed``` / Command -> ```python3 <SCRIPTS-PATH>/OctoprintLEDOFF.py``` / Type -> ```System``` / Enabled -> ```Checked```
