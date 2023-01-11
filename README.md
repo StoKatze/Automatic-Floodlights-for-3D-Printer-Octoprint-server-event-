@@ -59,7 +59,15 @@ Download the python scripts inside a directory, edit some parameters and set up 
 1. Repeat steps 3, 4 and 5 for file OctoprintLEDOFF.py
 
 #### Configuring Octoprint
-1. Writing...
+1. Open your Octoprint Web UI
+1. Open the settings (wrench icon)
+1. Choose "Event Manager" on the left sidebar
+1. Add these events (click close when you're done filling all the fields - also replace <SCRIPTS-PATH> with the absolute path of the scripts directory on your system):
+* Event -> ```PrintStarted``` / Command -> ```python3 <SCRIPTS-PATH>/OctoprintLEDON.py``` / Type -> ```System``` / Enabled -> ```Checked```
+* Event -> ```PrintDone``` / Command -> ```python3 <SCRIPTS-PATH>/OctoprintLEDOFF.py``` / Type -> ```System``` / Enabled -> ```Checked```
+* Event -> ```PrintFailed``` / Command -> ```python3 <SCRIPTS-PATH>/OctoprintLEDOFF.py``` / Type -> ```System``` / Enabled -> ```Checked```
+5. Click Save
+6. Restart your Octoprint server (either via the web UI or from the Raspberry Pi CLI)
 
 ## Thank you
 I don't know much about electronics so I tried making this circuit as easy as possible. Suggestions are welcome.
