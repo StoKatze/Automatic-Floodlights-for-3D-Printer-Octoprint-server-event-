@@ -56,7 +56,7 @@ Download the python scripts inside a directory, edit some parameters and set up 
 1. Edit it using nano or any other text editor ```nano OctoprintLEDON.py```
 1. Check and, if you are using another pin for the relay signal, edit line 6
 1. Save and exit
-1. Repeat steps 3, 4 and 5 for file OctoprintLEDOFF.py
+1. Repeat steps 3, 4 and 5 for file ```OctoprintLEDOFF.py```
 
 #### Configuring Octoprint
 1. Open your Octoprint Web UI
