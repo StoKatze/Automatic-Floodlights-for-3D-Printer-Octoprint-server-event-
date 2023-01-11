@@ -1,4 +1,6 @@
 # Automatic Floodlights for 3D Printer (Octoprint server)
+Python scripts that turns on some LEDs to get better light in timelapse recordings.
+This version uses the Octoprint Event Manager so there is no need for weird configurations.
 
 ## Requirements
 ### Software
