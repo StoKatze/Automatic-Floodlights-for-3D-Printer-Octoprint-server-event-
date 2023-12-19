@@ -4,7 +4,7 @@ This version uses the Octoprint Event Manager so there is no need for weird conf
 
 ## Requirements
 * (Obviously) an Octoprint server
-* 
+
 ### Up to Raspberry Pi OS Bullseye (Debian 11) and up to Raspberry Pi 4
 * Python 3 (Should be installed by default on Raspbian - [How to install](https://www.raspberrypi.org/forums/viewtopic.php?t=181480)) 
 * Python 3 RPi.GPIO package ```sudo pip install RPi.GPIO```
