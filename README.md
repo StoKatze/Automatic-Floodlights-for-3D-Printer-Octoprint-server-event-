@@ -67,7 +67,7 @@ Download the python scripts inside a directory, edit some parameters and set up 
 1. Repeat steps 3, 4 and 5 for file ```OctoprintLEDOFF.py```
 
 #### Configuring the python script (from Raspberry Pi 5)
-Please note that starting from Raspberry Pi 5, GPIO is handled very differently so I had to use a different library. This library references the Broadcom GPIO names. This website provides an easy to understand diagram: https://pinout.xyz/ . You should use the number after "GPIO". If following the wiring in this example, you should put 17 instead of 7 in line 9 (PIN_IMP variable value).
+Please note that starting from Raspberry Pi 5, GPIO is handled very differently so I had to use a different library. This library references the Broadcom GPIO names. This website provides an easy to understand diagram: https://pinout.xyz/ . You should use the number after "GPIO". If following the wiring in this example, you should put 4 instead of 7 in line 9 (PIN_IMP variable value).
 1. Create a new directory and ```CD``` into it
 1. Download the Raspberry Pi 5 python scripts in this directory
 1. Edit it using nano or any other text editor ```nano OctoprintLEDON.py```
