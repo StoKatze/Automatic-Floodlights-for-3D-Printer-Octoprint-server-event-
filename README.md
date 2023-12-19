@@ -3,12 +3,20 @@ Python scripts that turns on some LEDs to get better light in timelapse recordin
 This version uses the Octoprint Event Manager so there is no need for weird configurations.
 
 ## Requirements
-### Software
+* (Obviously) an Octoprint server
+* 
+### Up to Raspberry Pi OS Bullseye (Debian 11) and up to Raspberry Pi 4
 * Python 3 (Should be installed by default on Raspbian - [How to install](https://www.raspberrypi.org/forums/viewtopic.php?t=181480)) 
 * Python 3 RPi.GPIO package ```sudo pip install RPi.GPIO```
-* (Obviously) an Octoprint server
-* Works fine on Raspberry Pi OS Bullseye (Debian 11)
 
+#### Software Raspberry Pi OS Bookworm (Debian 12) and up to Raspberry Pi 4
+* Python 3 (Should be installed by default on Raspbian - [How to install](https://www.raspberrypi.org/forums/viewtopic.php?t=181480)) 
+* Python 3 RPi.GPIO package ```sudo pip install RPi.GPIO --break-system-packages```
+
+#### Software Raspberry Pi OS Bookworm (Debian 12) and starting from Raspberry Pi 5
+* Python 3 (Should be installed by default on Raspbian - [How to install](https://www.raspberrypi.org/forums/viewtopic.php?t=181480)) 
+* Python 3 gpiod package ```sudo pip3 install --upgrade gpiod --break-system-packages```
+  
 ### Hardware
 * Raspberry Pi
 * 1 Channel 5V Relay [(Something like this)](https://www.amazon.com/dp/B00VRUAHLE/)
@@ -50,11 +58,20 @@ Please note that if you have a fan, the ground pin next to the 5V one might be a
 Download the python scripts inside a directory, edit some parameters and set up octoprint to execute it when a print stars or ends or fails.
 
 ### Detailed instructions
-#### Configuring the python script
+#### Configuring the python script (until Raspberry Pi 4)
 1. Create a new directory and ```CD``` into it
 1. Download the python scripts in this directory
 1. Edit it using nano or any other text editor ```nano OctoprintLEDON.py```
 1. Check and, if you are using another pin for the relay signal, edit line 6
+1. Save and exit
+1. Repeat steps 3, 4 and 5 for file ```OctoprintLEDOFF.py```
+
+#### Configuring the python script (from Raspberry Pi 5)
+Please note that starting from Raspberry Pi 5, GPIO is handled very differently so I had to use a different library. This library references the Broadcom GPIO names. This website provides an easy to understand diagram: https://pinout.xyz/ . You should use the number after "GPIO". If following the wiring in this example, you should put 17 instead of 7 in line 9 (PIN_IMP variable value).
+1. Create a new directory and ```CD``` into it
+1. Download the Raspberry Pi 5 python scripts in this directory
+1. Edit it using nano or any other text editor ```nano OctoprintLEDON.py```
+1. Check and, if you are using another pin for the relay signal, edit line 9
 1. Save and exit
 1. Repeat steps 3, 4 and 5 for file ```OctoprintLEDOFF.py```
 
